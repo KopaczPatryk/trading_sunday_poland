@@ -19,20 +19,21 @@ class TradingSundayPoland {
         sunday.day == today.day);
   }
 
-  static DateTime whenIsNextTradingSunday() {
+  static DateTime whenIsNextTradingSunday([DateTime? time]) {
     final today = DateTime.now();
-    final tradingSundays = getTradingSundaysInYear(today.year);
+    final after = time ?? today;
+    final tradingSundays = getTradingSundaysInYear(after.year);
 
     // Check current year first
     final currentYearTradingSundays =
-        tradingSundays.where((sunday) => sunday.isAfter(today)).toList();
+        tradingSundays.where((sunday) => sunday.isAfter(after)).toList();
 
     if (currentYearTradingSundays.isNotEmpty) {
       return currentYearTradingSundays.first;
     }
 
     // If no trading Sundays left this year, check next year
-    final nextYearTradingSundays = getTradingSundaysInYear(today.year + 1);
+    final nextYearTradingSundays = getTradingSundaysInYear(after.year + 1);
     return nextYearTradingSundays.first;
   }
 }
