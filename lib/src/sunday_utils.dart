@@ -23,9 +23,6 @@ List<DateTime> getSundaysInMonth(int month, {int? year}) {
 
   final tempSundays = List<DateTime>.empty(growable: true);
 
-  // if (daysUntilSunday == 0) {
-  //   tempSundays.add(firstDayOfMonth);
-  // }
   for (var i = 0; i < 5; i++) {
     final sunday = firstDayOfMonth.add(
       Duration(
@@ -87,30 +84,32 @@ DateTime getPreviousSundayFromDate([DateTime? fromDate]) {
   final date = fromDate ?? DateTime.now();
   final daysSinceSunday = date.weekday % 7;
 
-  // If today is Sunday, return today (same day)
   if (daysSinceSunday == 0) {
-    return date;
+    return date.subtract(Duration(days: 7));
   }
 
   return date.subtract(Duration(days: daysSinceSunday));
 }
 
 List<DateTime> getTradingSundaysInYear([int? year]) {
-  final currentYear = DateTime.now().year;
-  final easter = getEasterDateInYear(year ?? currentYear);
+  final currentYear = year ?? DateTime.now().year;
+  final easter = getEasterDateInYear(currentYear);
 
   final christmassEve = DateTime(currentYear, 12, 24);
-  final decemberSundays = getSundaysInMonth(year: year, 12)
+  final decemberSundays = getSundaysInMonth(year: currentYear, 12)
       .where((sunday) => sunday.isBefore(christmassEve))
       .toList();
-  return [
-    getLastSundayInMonth(1),
-    getLastSundayInMonth(4),
-    getLastSundayInMonth(6),
-    getLastSundayInMonth(8),
-    getPreviousSundayFromDate(easter),
+  final eastersPreviousSunday = getPreviousSundayFromDate(easter);
+  final sortedDates = [
+    getLastSundayInMonth(1, year: currentYear),
+    getLastSundayInMonth(4, year: currentYear),
+    getLastSundayInMonth(6, year: currentYear),
+    getLastSundayInMonth(8, year: currentYear),
+    eastersPreviousSunday,
     ...decemberSundays,
-  ];
+  ]..sort((a, b) => a.compareTo(b));
+
+  return sortedDates;
 }
 
 DateTime getEasterDateInYear(int year) {
