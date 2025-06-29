@@ -1,6 +1,25 @@
-// TODO: Put public facing types in this file.
+abstract class TradingSunday {
+  bool isTodayTradingSunday();
+  bool isNextSundayTrading();
+  DateTime whenIsNextTradingSunday();
+}
 
-/// Checks if you are awesome. Spoiler: you are.
-class Awesome {
-  bool get isAwesome => true;
+class TradingSundayImpl implements TradingSunday {
+  @override
+  bool isNextSundayTrading() {
+    // TODO: implement isNextSundayTrading
+    throw UnimplementedError();
+  }
+
+  @override
+  bool isTodayTradingSunday() {
+    // TODO: implement isTodayTradingSunday
+    throw UnimplementedError();
+  }
+
+  @override
+  DateTime whenIsNextTradingSunday() {
+    // TODO: implement whenIsNextTradingSunday
+    throw UnimplementedError();
+  }
 }
