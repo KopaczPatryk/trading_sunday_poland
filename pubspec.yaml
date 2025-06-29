@@ -2,7 +2,6 @@ name: trading_sunday_poland
 description: Library to allow checking if there is trading sunday in poland
 version: 1.0.0
 repository: https://github.com/KopaczPatryk/trading_sunday_poland
-publish_to: none
 
 environment:
   sdk: '>=2.17.0 <4.0.0'
