@@ -4,7 +4,7 @@ void main() {
   TradingSundayPoland.isTodayTradingSunday();
   TradingSundayPoland.isNextSundayTrading();
   TradingSundayPoland.whenIsNextTradingSunday();
-  
+
   //Get first trading sunday in 2026
   TradingSundayPoland.whenIsNextTradingSunday(DateTime(2026));
 
