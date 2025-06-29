@@ -91,6 +91,7 @@ DateTime getPreviousSundayFromDate([DateTime? fromDate]) {
   return date.subtract(Duration(days: daysSinceSunday));
 }
 
+/// Get ascending list of trading sundays in current or specified year
 List<DateTime> getTradingSundaysInYear([int? year]) {
   final currentYear = year ?? DateTime.now().year;
   final easter = getEasterDateInYear(currentYear);

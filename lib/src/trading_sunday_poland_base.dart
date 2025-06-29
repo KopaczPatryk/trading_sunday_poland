@@ -1,6 +1,7 @@
 import 'sunday_utils.dart';
 
 class TradingSundayPoland {
+  /// Quckly check if upcoming sunday is trading one
   static bool isNextSundayTrading() {
     final nextSunday = getNextSundayFromDate();
     final tradingSundays = getTradingSundaysInYear(nextSunday.year);
@@ -10,6 +11,7 @@ class TradingSundayPoland {
         sunday.day == nextSunday.day);
   }
 
+  /// Quickly check if today is trading sunday
   static bool isTodayTradingSunday() {
     final today = DateTime.now();
     final tradingSundays = getTradingSundaysInYear(today.year);
@@ -18,7 +20,8 @@ class TradingSundayPoland {
         sunday.month == today.month &&
         sunday.day == today.day);
   }
-
+  
+  /// Check when is next trading sunday. Allows search in future
   static DateTime whenIsNextTradingSunday([DateTime? time]) {
     final today = DateTime.now();
     final after = time ?? today;
