@@ -1,14 +1,7 @@
 import 'sunday_utils.dart';
 
-abstract class TradingSunday {
-  bool isTodayTradingSunday();
-  bool isNextSundayTrading();
-  DateTime whenIsNextTradingSunday();
-}
-
-class TradingSundayImpl implements TradingSunday {
-  @override
-  bool isNextSundayTrading() {
+class TradingSundayPoland {
+  static bool isNextSundayTrading() {
     final nextSunday = getNextSundayFromDate();
     final tradingSundays = getTradingSundaysInYear(nextSunday.year);
     return tradingSundays.any((sunday) =>
@@ -17,8 +10,7 @@ class TradingSundayImpl implements TradingSunday {
         sunday.day == nextSunday.day);
   }
 
-  @override
-  bool isTodayTradingSunday() {
+  static bool isTodayTradingSunday() {
     final today = DateTime.now();
     final tradingSundays = getTradingSundaysInYear(today.year);
     return tradingSundays.any((sunday) =>
@@ -27,8 +19,7 @@ class TradingSundayImpl implements TradingSunday {
         sunday.day == today.day);
   }
 
-  @override
-  DateTime whenIsNextTradingSunday() {
+  static DateTime whenIsNextTradingSunday() {
     final today = DateTime.now();
     final tradingSundays = getTradingSundaysInYear(today.year);
 

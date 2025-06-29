@@ -1,7 +1,7 @@
 name: trading_sunday_poland
-description: A starting point for Dart libraries or applications.
+description: Library to allow checking if there is trading sunday in poland
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/KopaczPatryk/trading_sunday_poland
 publish_to: none
 
 environment:
@@ -12,3 +12,11 @@ dependencies:
 
 dev_dependencies:
   test: ^1.24.0
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
