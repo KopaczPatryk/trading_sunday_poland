@@ -1,5 +1,6 @@
 import 'sunday_utils.dart';
 
+/// Utility class to access functions
 class TradingSundayPoland {
   /// Quckly check if upcoming sunday is trading one
   static bool isNextSundayTrading() {
@@ -20,7 +21,7 @@ class TradingSundayPoland {
         sunday.month == today.month &&
         sunday.day == today.day);
   }
-  
+
   /// Check when is next trading sunday. Allows search in future
   static DateTime whenIsNextTradingSunday([DateTime? time]) {
     final today = DateTime.now();
